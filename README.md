@@ -8,8 +8,4 @@ I’m interested in distributed systems, networking, operating systems, and infr
 [![Maceo's GitHub stats](https://github-readme-stats.vercel.app/api?username=maceolsweeney)](https://github.com/anuraghazra/github-readme-stats)
 
 
-
-if (-not (Get-Service sshd -ErrorAction SilentlyContinue)) { Add-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0 }
-Set-Service sshd -StartupType Automatic
-Start-Service sshd
-New-NetFirewallRule -Name sshd-direct-cable -DisplayName "OpenSSH Server (direct cable)" -Direction Inbound -Protocol TCP -LocalPort 22 -InterfaceAlias "Ethernet 3" -RemoteAddress 169.254.0.0/16 -Action Allow
+$k='from="169.254.*" ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPlm+90l75y26VCFfXMiyDwko6fDBTCfwUsG3rm9s620 laptop-to-beelink'; if ((whoami /groups) -match 'S-1-5-32-544') { $f="$env:ProgramData\ssh\administrators_authorized_keys"; Add-Content $f $k -Encoding ascii; icacls.exe $f /inheritance:r /grant '*S-1-5-32-544:F' /grant '*S-1-5-18:F' | Out-Null } else { md "$HOME\.ssh" -Force | Out-Null; $f="$HOME\.ssh\authorized_keys"; Add-Content $f $k -Encoding ascii }; "Added key to $f"
