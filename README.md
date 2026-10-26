@@ -6,4 +6,5 @@ I mainly code in Java, Rust, C++, and Python.
 
 I’m interested in distributed systems, networking, operating systems, and infrastructure design, with a focus on performance and scalability.
 
+My Stats: 🗣️
 [![Maceo's GitHub stats](https://github-readme-stats.vercel.app/api?username=maceolsweeney)](https://github.com/anuraghazra/github-readme-stats)
